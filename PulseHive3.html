@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse Hive - Registration Form</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px 16px 0;
+      font-family: Arial, sans-serif;
+      background: #fff8e6;
+      color: #4a3410;
+      text-align: center;
+    }
+    .site-header {
+      padding: 18px 12px;
+      background: #ffe19a;
+      color: #b3380f;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    h2 {
+      margin: 18px 0 10px;
+      color: #b3380f;
+      font-size: 22px;
+    }
+    .intro {
+      margin: 0 0 18px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    .form-container {
+      width: 100%;
+      max-width: 375px;
+      margin: 0 auto 20px;
+      padding: 18px;
+      background: #fff;
+      border: 1px solid #f0cf85;
+      border-radius: 9px;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin: 9px 0 4px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    input:not([type="radio"]):not([type="checkbox"]), select {
+      display: block;
+      width: 100%;
+      height: 30px;
+      padding: 5px 8px;
+      border: 1px solid #e3c27a;
+      border-radius: 4px;
+      background: #fff;
+      font-family: inherit;
+      font-size: 11px;
+    }
+    .gender, .terms {
+      margin-top: 8px;
+      font-size: 12px;
+    }
+    .gender label {
+      display: inline;
+      margin: 0 5px 0 0;
+      font-weight: normal;
+    }
+    .gender input, .terms input { vertical-align: middle; }
+    .terms { margin-top: 10px; }
+    .terms label { display: inline; margin: 0; font-weight: normal; }
+    .actions { margin-top: 12px; }
+    button {
+      padding: 7px 16px;
+      border: 0;
+      border-radius: 4px;
+      background: #d9480f;
+      color: #fff;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    button[type="reset"] { background: #8a6d3b; }
+    button:hover { opacity: .88; }
+    #message { margin: 10px 0 0; font-size: 13px; font-weight: bold; }
+    footer {
+      margin: 0 -16px;
+      padding: 15px 10px 8px;
+      border-top: 1px solid #f0cf85;
+      color: #b3380f;
+      font-weight: bold;
+    }
+    footer p { margin: 8px 0 0; color: #4a3410; font-size: 12px; font-weight: normal; }
+    @media (max-width: 420px) {
+      body { padding-left: 10px; padding-right: 10px; }
+      footer { margin-left: -10px; margin-right: -10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">🐝 Pulse Hive</header>
+
+  <main>
+    <h2>📝 Join the Hive</h2>
+    <p class="intro">Register here to track your pulse, build healthy habits and connect with a community of wellness enthusiasts.</p>
+
+    <div class="form-container">
+      <form id="registrationForm">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label>Gender:</label>
+        <div class="gender">
+          <label><input type="radio" name="gender" value="Male" required> Male</label>
+          <label><input type="radio" name="gender" value="Female"> Female</label>
+          <label><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" placeholder="Enter your city" required>
+
+        <label for="activity">Activity Level:</label>
+        <select id="activity" name="activity" required>
+          <option value="">Select Activity Level</option>
+          <option>Beginner</option>
+          <option>Casual</option>
+          <option>Active</option>
+          <option>Athlete</option>
+          <option>Health Professional</option>
+        </select>
+
+        <label for="interest">Area of Interest:</label>
+        <select id="interest" name="interest" required>
+          <option value="">Select Interest</option>
+          <option>Heart Rate Monitoring</option>
+          <option>Wearable Health Tech</option>
+          <option>Fitness &amp; Workouts</option>
+          <option>Sleep &amp; Recovery</option>
+          <option>Stress &amp; Mindfulness</option>
+          <option>Community Challenges</option>
+        </select>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" minlength="8" required>
+
+        <label for="confirm">Confirm Password:</label>
+        <input type="password" id="confirm" name="confirm" placeholder="Confirm your password" required>
+
+        <div class="terms">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I agree to the terms and conditions.</label>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Join Hive</button>
+          <button type="reset">Reset</button>
+        </div>
+        <p id="message" aria-live="polite"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    🐝 Pulse Hive
+    <p>Beat | Buzz | Connect | Thrive</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm').value;
+
+      if (password !== confirmPassword) {
+        message.style.color = 'red';
+        message.textContent = 'Passwords do not match!';
+        return;
+      }
+
+      message.style.color = 'green';
+      message.textContent = 'Welcome to the Hive! Registration Successful!';
+      form.reset();
+    });
+
+    form.addEventListener('reset', function () {
+      message.textContent = '';
+    });
+  </script>
+</body>
+</html>
